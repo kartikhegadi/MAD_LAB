@@ -1,0 +1,99 @@
+xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BEC393"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="91dp"
+        android:text="XML AND JSON PARSER"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="146dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginBottom="504dp"
+        android:onClick="parsexml"
+        android:text="Parse-XML"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="143dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="400dp"
+        android:onClick="parsejson"
+        android:text="PARSE-JSON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="283dp"
+        android:layout_height="335dp"
+        android:layout_marginBottom="64dp"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.656"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+city.xml
+<?xml version="1.0" ?>
+<records>
+    <place>
+        <name>Hubballi</name>
+        <lat>12.295</lat>
+        <long>76.679</long>
+        <temperature>25</temperature>
+        <humidity>90%</humidity>
+    </place>
+    <place>
+        <name>Bangalore</name>
+        <lat>12.295</lat>
+        <long>76.679</long>
+        <temperature>25</temperature>
+        <humidity>74%</humidity>
+    </place>
+</records>
+
+
+city.json
+[
+  {
+    "name":"Dharwad",
+    "lat": "12.95",
+    "long": "76.639",
+    "temperature":"29",
+    "humidity": "74%"
+  },
+  {
+    "name":"Mysore",
+    "lat": "12.95",
+    "long": "76.639",
+    "temperature":"29",
+    "humidity": "74%"
+  }
+]
