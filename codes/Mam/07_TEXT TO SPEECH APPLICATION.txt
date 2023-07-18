@@ -1,0 +1,96 @@
+TEXT TO SPEECH APPLICATION
+XML CODE
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text to Speech Application"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <EditText
+        android:id="@+id/edt_txt"
+        android:layout_width="331dp"
+        android:layout_height="98dp"
+        android:ems="10"
+        android:hint="Enter Text Here"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
+
+    <Button
+        android:id="@+id/btn_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speech"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
+
+JAVA CODE
+package com.example.texttospeech;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextToSpeech.OnInitListener{
+    Button btnSpeak;
+    EditText txtSpeak;
+
+    TextToSpeech textToSpeech;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        txtSpeak=(EditText)findViewById(R.id.edt_txt);
+
+        btnSpeak=(Button)findViewById(R.id.btn_speech);
+        btnSpeak.setOnClickListener(this);
+
+        textToSpeech=new TextToSpeech(getBaseContext(),this);
+        textToSpeech.setLanguage(Locale.ENGLISH);
+    }
+    public void onClick(View v) {
+        String text=txtSpeak.getText().toString();
+        textToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null);
+
+    }
+    public void onInit(int status) {
+        if (status != TextToSpeech.ERROR) {
+            Toast.makeText(getBaseContext(), "Success", Toast.LENGTH_LONG).show();
+        }
+    }
+}
+
